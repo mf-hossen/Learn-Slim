@@ -22,6 +22,13 @@ spl_autoload_register(function ($classname) {
 
 $container = $app->getContainer();
 
+$container['logger'] = function($c) {
+    $logger = new \Monolog\Logger('my_logger');
+    $file_handler = new \Monolog\Handler\StreamHandler("../logs/app.log");
+    $logger->pushHandler($file_handler);
+    return $logger;
+};
+
 $container['db'] = function ($c) {
     $db = $c['settings']['db'];
     $pdo = new PDO("mysql:host=" . $db['host'] . ";dbname=" . $db['dbname'],
@@ -51,6 +58,9 @@ $app->get('/employee', function (Request $request, Response $response) {
     $mapper = new EmployeeMapper($this->db);
     $data=$mapper->getEmployee();
     $response = $this->view->render($response, "list.php", ['employee'=>$data]);
+    $this->logger->addInfo("Something  happened");
+    $this->logger->error('');
+    $this->logger->warning();
     return $response;
 });
 
