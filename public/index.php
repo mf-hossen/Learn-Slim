@@ -11,4 +11,12 @@ $app->get('/hello/{name}', function (Request $request, Response $response) {
 
     return $response;
 });
+
+$app->get('/', function (Request $request, Response $response) {
+
+    $response->getBody()->write("This is home page");
+
+    return $response;
+});
+
 $app->run();
