@@ -19,3 +19,6 @@
 [2016-08-18 18:18:19] my_logger.INFO: Something  happened [] []
 [2016-08-18 18:18:19] my_logger.ERROR:  [] []
 [2016-08-18 18:18:19] my_logger.WARNING:  [] []
+[2016-08-18 18:31:48] my_logger.INFO: Something  happened [] []
+[2016-08-18 18:31:48] my_logger.ERROR:  [] []
+[2016-08-18 18:31:48] my_logger.WARNING:  [] []

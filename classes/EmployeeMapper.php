@@ -15,4 +15,9 @@ class EmployeeMapper extends Mapper
             return $result;
     }
 
+    public function addemployee($data){
+
+        var_dump($data);
+
+    }
 }

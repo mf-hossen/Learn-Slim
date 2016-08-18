@@ -54,6 +54,8 @@ $app->get('/', function (Request $request, Response $response) {
     return $response;
 });
 
+
+
 $app->get('/employee', function (Request $request, Response $response) {
     $mapper = new EmployeeMapper($this->db);
     $data=$mapper->getEmployee();
@@ -62,6 +64,17 @@ $app->get('/employee', function (Request $request, Response $response) {
     $this->logger->error('');
     $this->logger->warning();
     return $response;
+});
+
+$app->get('/insert', function (Request $request, Response $response) {
+    $response = $this->view->render($response, "insert.php");
+});
+
+$app->post('/insert', function (Request $request, Response $response) {
+    $data = $request->getParsedBody();
+    //var_dump($data);
+    $mapper = new EmployeeMapper($this->db);
+    $mapper->addemployee($data);
 });
 
 
