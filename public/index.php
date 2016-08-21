@@ -74,7 +74,27 @@ $app->post('/insert', function (Request $request, Response $response) {
     $data = $request->getParsedBody();
     //var_dump($data);
     $mapper = new EmployeeMapper($this->db);
-    $mapper->addemployee($data);
+    $mapper->AddEmployee($data);
+    return $response->withRedirect('/employee');
+
+
+});
+
+$app->get('/update/{id}', function(Request $request, Response $response) {
+    $id = $request->getAttribute('id');
+    $mapper = new EmployeeMapper($this->db);
+    $update_data = $mapper->GetbyId($id);
+    $response = $this->view->render($response, "update.php",['update_data'=>$update_data]);
+    return $response;
+});
+
+$app->post('/update', function (Request $request, Response $response) {
+    $data = $request->getParsedBody();
+    //var_dump($data);
+    $mapper = new EmployeeMapper($this->db);
+    $message=$mapper->EditEmployee($data);
+
+
 });
 
 
