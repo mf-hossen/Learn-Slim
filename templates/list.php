@@ -58,7 +58,7 @@
 
                    
         </div>
-    </div>
+    </div><br><br>
 
     <div class="row">
         <table class="table table-responsive">
@@ -68,7 +68,7 @@
                 <th>Designation</th>
 
                 <th>Department</th>
-                <th>Department</th>
+                <th>Work Type</th>
                 <th>Salary</th>
                 <th>Action</th>
 
@@ -78,43 +78,36 @@
 
 
                 // english notation (default)
-                foreach ($employee as $emp) {
-                    echo "<tr>";
-                    //echo "<td>";
-                    //echo $emp['id'];
-                    //echo "</td>";
+                foreach ($employee as $emp) { ?>
 
-                    echo "<td class='text-right'>";
-                    echo $emp['name'];
-                    echo "</td>";
+                     <tr>
 
-                    echo "<td class='text-right'>";
-                    echo $emp['designation'];
-                    echo "</td>";
+                   <td class='text-right'> <?php echo $emp['name'] ?></td>
+
+                         <td class='text-right'> <?php echo $emp['designation'] ?></td>
 
 
 
-                    echo "<td class='text-right'>";
-                    echo $emp['department'];
-                    echo "</td>";
+                         <td class='text-right'> <?php echo $emp['department'] ?></td>
 
-                    echo "<td class='text-right'>";
-                    echo $emp['work_time'];
-                    echo "</td>";
+                         <td class='text-right'> <?php echo $emp['work_time'] ?></td>
 
-                    echo "<td class='text-right'>";
-                    echo $number= number_format($emp['salary']);;
-                    echo "</td>";
+                         <td class='text-right'> <?php echo $number= number_format($emp['salary']) ?></td>
 
-                    echo "<td class='text-right'>";
-                    echo "<span class='glyphicon glyphicon-eye-open' title=\"View Employee\" aria-hidden=\"true\"></span> ";
-                    echo "<span class='glyphicon glyphicon-pencil' title=\"Edit Employee\" aria-hidden=\"true\" style='color: green'></span>  ";
-                    echo "<span class='glyphicon glyphicon-remove' title=\"Remove Employee\" aria-hidden=\"true\" style='color: red'></span> ";
-                    echo "</td>";
 
-                    echo "</tr>";
-                }
-                ?>
+
+                    <td class='text-right'>
+
+                    <span class='glyphicon glyphicon-eye-open' title=\"View Employee\" aria-hidden=\"true\"></span>
+                    <a href='/update/<?php echo $emp['id']?>'><span class='glyphicon glyphicon-pencil' title=\"Edit Employee\" aria-hidden=\"true\" style='color: green'></span></a>
+                    <span class='glyphicon glyphicon-remove' title=\"Remove Employee\" aria-hidden=\"true\" style='color: red'></span>
+
+                    </td>
+
+                    </tr>
+
+              <?php  } ?>
+
 
             </div>
         </table>

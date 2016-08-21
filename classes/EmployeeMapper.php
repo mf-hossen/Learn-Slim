@@ -15,11 +15,11 @@ class EmployeeMapper extends Mapper
             return $result;
     }
 
-    public function addemployee($data){
+    public function AddEmployee($data){
         {
             // var_dump($data); die();
             try {
-                $stmt = $this->db->prepare("INSERT INTO employee (name,designation,department,work_time,salary)VALUES (:name,:designation,:department,:work_time,:salary)");
+                $stmt = $this->db->prepare("INSERT INTO employee (name,designation,salary,work_time,department)VALUES (:name,:designation,:salary,:work_time,:department)");
 
 
 
@@ -35,8 +35,34 @@ class EmployeeMapper extends Mapper
 
             } catch (Exception $e) {
                 throw $e;
-                //return false;
+
             }
         }
+    }
+
+
+    public function GetbyId($id)
+    {
+        $sql = "SELECT * FROM employee where id='$id'";
+        $stmt = $this->db->query($sql);
+        $row = $stmt->fetchAll();
+        return $row;
+    }
+
+    public function EditEmployee($data)
+    {
+        $id=$data['id'];
+        //var_dump($data); die();
+        $stmt = $this->db->prepare("update employee set name=:name, designation=:designation, department=:department, work_time=:work_time, salary=:salary where id='$id'");
+        $stmt->bindParam(':name', $data['name']);
+        $stmt->bindParam(':designation', $data['designation']);
+        $stmt->bindParam(':department', $data['department']);
+        $stmt->bindParam(':work_time', $data['work_time']);
+        $stmt->bindParam(':salary', $data['salary']);
+        //$stmt = $this->db->query($sql);
+        $stmt->execute();
+        //return $stmt->withStatus(302)->withHeader('Location', 'your-new-uri');
+        return $stmt;
+
     }
 }

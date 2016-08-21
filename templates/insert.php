@@ -28,51 +28,62 @@
                    
             <li><a href="#">Add Employee</a></li>
         </ol>
+
+
          <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-9">
+            </div>
+                 <form  action="/insert" method="post" style="width: 450px; margin: 0 auto">
+                    <legend><h3>Employee Registration Form</h3></legend>
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" name="name" class="form-control" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="des">Designation:</label>
+                    <select name="designation" class="form-control" id="desi" required>
+                        <option value="">--Select Designation--</option>
+                        <option value="manager">Manager</option>
+                        <option value="reception">Reception</option>
+                        <option value="keeping">Keeper</option>
+                    </select>
+                    <!--<input type="text" name="designation" class="form-control" id="desi">-->
+                </div>
+                <div class="form-group">
+                    <label for="dept">Depatrment:</label>
+                    <select name="department" class="form-control" id="dept" required>
+                        <option value="">--Select Department--</option>
+                        <option value="hrm">Manager</option>
+                        <option value="reception">Reception</option>
+                        <option value="keeping">Keeper</option>
+                    </select>
+                    <!--<input type="text" name="department" class="form-control" id="dept">-->
+                </div>
 
-            <div class="col-md-2"></div>
-            <div class="col-md-10">
-                <fieldset style="width: 450px">
-                    <legend>Add Employee</legend>
-                    <form action="/insert" method="post" class="well">
-                        <div>
-                            <b>Name</b>
-                            <input type="text" name="name" placeholder="Input your name" required>
-                        </div><br>
+                <div class="form-group">
+                    <label for="dept">Work_type:</label>
+                    <select name="work_time" class="form-control" id="wtype" required>
+                        <option value="">--Select Work type--</option>
+                        <option value="day">Day</option>
+                        <option value="night">Night</option>
+                        <option value="full">Full</option>
+                    </select>
+                    <!--<input type="text" name="Work_time" class="form-control" id="wtype">-->
+                </div>
 
-                        <div>
-                            <b>Designation</b>
-                            <input type="text" name="designation" placeholder="Input your designation" required>
-                        </div><br>
-
-                        <div>
-                            <b>Department</b>
-                            <input type="text" name="department" placeholder="Input your department" required>
-                        </div><br>
-
-                        <div>
-                            <b>Work_time</b>
-                            <input type="text" name="work_time" placeholder="Input your work_time" required>
-                        </div><br>
-
-                        <div>
-                            <b>Salary</b>
-                            <input type="text" name="salary" placeholder="Input your salary" required>
-                        </div><br>
-
-                        <div>
-                            </ br>
-                           <a href="/employee"> <button class="btn btn-info" type="submit">Submit</button></a>
-                        </div>
-                    </form>
-
-                </fieldset>
-
-
+                <div class="form-group">
+                    <label for="sal">Salary:</label>
+                    <input type="number" name="salary" class="form-control" id="salary">
+                </div>
+                <button type="submit" class="btn btn-info">Submit</button>
+            </form>
         </div>
-                   
     </div>
 
+            </div>
+
+        </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
