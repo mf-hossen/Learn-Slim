@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Bootstrap 101 Template</title>
+    <title>Add Emloyee</title>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -21,47 +21,57 @@
 </head>
 <body>
 
-<form action="/insert" method="post" class="well">
+    <div class="container">
+        <ol class="breadcrumb">
+                 
+            <li><a href="/employee">Home</a></li>
+                   
+            <li><a href="#">Add Employee</a></li>
+        </ol>
          <div class="row">
-                   <div class="col-md-2"></div>
-        <div class="col-md-6">
-                           <div class="form-group">
-                                   <label for="exampleInputPassword1">Name</label>
-                                   <input type="text" name="name" class="form-control" id="" placeholder="Enter student name" required>
-                               </div>
 
-                           <div class="form-group">
-                                   <label for="exampleInputPassword1">designation</label>
-                                   <input type="text" name="designation" class="form-control" id="" placeholder="Enter email">
-                               </div>
-                           <div class="form-group">
-                                   <label for="exampleInputPassword1">Salary</label>
-                                   <input type="text" name="salary" class="form-control" id="" placeholder="Enter age" required>
-                               </div>
-                           <div class="form-group">
-                                   <label for="exampleInputPassword1">Work_type</label>
-                                   <input type="text" name="work_type" class="form-control" id="" placeholder="Enter address" required>
-                           </div>
+            <div class="col-md-2"></div>
+            <div class="col-md-10">
+                <fieldset style="width: 450px">
+                    <legend>Add Employee</legend>
+                    <form action="/insert" method="post" class="well">
+                        <div>
+                            <b>Name</b>
+                            <input type="text" name="name" placeholder="Input your name" required>
+                        </div><br>
 
-            <div class="form-group">
-                                   <label for="exampleInputPassword1">Department</label>
-                                   <input type="text" name="department" class="form-control" id="" placeholder="Enter address" required>
-                           </div>
+                        <div>
+                            <b>Designation</b>
+                            <input type="text" name="designation" placeholder="Input your designation" required>
+                        </div><br>
 
-            <button class="btn btn-success">Submit</button>
-                       </div>
-                 
-                           
+                        <div>
+                            <b>Department</b>
+                            <input type="text" name="department" placeholder="Input your department" required>
+                        </div><br>
+
+                        <div>
+                            <b>Work_time</b>
+                            <input type="text" name="work_time" placeholder="Input your work_time" required>
+                        </div><br>
+
+                        <div>
+                            <b>Salary</b>
+                            <input type="text" name="salary" placeholder="Input your salary" required>
+                        </div><br>
+
+                        <div>
+                            </ br>
+                           <a href="/employee"> <button class="btn btn-info" type="submit">Submit</button></a>
+                        </div>
+                    </form>
+
+                </fieldset>
 
 
-               
-
-            </div>
-
-
-
-</form>
-
+        </div>
+                   
+    </div>
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

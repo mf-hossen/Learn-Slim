@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Bootstrap 101 Template</title>
+    <title>Employee List</title>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -52,7 +52,7 @@
         </div>
                
         <div class="col-md-6">
-                       <a href="#" class=" glyphicon glyphicon-plus btn btn-info pull-right" type="button">
+                       <a href="/insert" class=" glyphicon glyphicon-plus btn btn-info pull-right" type="button">
                 CREATE</a>
 
 
