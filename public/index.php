@@ -1,4 +1,5 @@
 <?php
+    session_start();
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
 
@@ -21,6 +22,11 @@ spl_autoload_register(function ($classname) {
 });
 
 $container = $app->getContainer();
+
+$container['flash'] = function () {
+    return new \Slim\Flash\Messages();
+};
+
 
 $container['logger'] = function($c) {
     $logger = new \Monolog\Logger('my_logger');
@@ -59,7 +65,8 @@ $app->get('/', function (Request $request, Response $response) {
 $app->get('/employee', function (Request $request, Response $response) {
     $mapper = new EmployeeMapper($this->db);
     $data=$mapper->getEmployee();
-    $response = $this->view->render($response, "list.php", ['employee'=>$data]);
+    $messages = $this->flash->getMessages();
+    $response = $this->view->render($response, "list.php", ['employee'=>$data,'msg'=>$messages]);
     $this->logger->addInfo("Something  happened");
     $this->logger->error('');
     $this->logger->warning();
@@ -75,6 +82,7 @@ $app->post('/insert', function (Request $request, Response $response) {
     //var_dump($data);
     $mapper = new EmployeeMapper($this->db);
     $mapper->AddEmployee($data);
+    $this->flash->addMessage('message', 'Data Inserted');
     return $response->withRedirect('/employee');
 
 
@@ -92,10 +100,20 @@ $app->post('/update', function (Request $request, Response $response) {
     $data = $request->getParsedBody();
     //var_dump($data);
     $mapper = new EmployeeMapper($this->db);
-    $message=$mapper->EditEmployee($data);
-
-
+    $mapper->EditEmployee($data);
+    //return $response->withRedirect('/details');
 });
+
+$app->get('/details/{id}', function(Request $request, Response $response) {
+    $id = $request->getAttribute('id');
+    $mapper = new EmployeeMapper($this->db);
+    $details_data = $mapper->GetDetails($id);
+
+    $response = $this->view->render($response, "details.php",['details'=>$details_data]);
+    return $response;
+});
+
+
 
 
 $app->run();

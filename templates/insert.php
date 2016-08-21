@@ -29,6 +29,22 @@
             <li><a href="#">Add Employee</a></li>
         </ol>
 
+        <div class="row">
+                   
+            <div class="col-md-6">
+                               <h2 class="pull-left"></h2>
+                       
+            </div>
+                   
+            <div class="col-md-6">
+                           <a href="/employee" class="btn btn-info pull-right" type="button">
+                    Show All</a>
+
+
+                       
+            </div>
+        </div><br><br>
+
 
          <div class="row">
             <div class="col-md-3"></div>

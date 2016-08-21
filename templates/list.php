@@ -43,6 +43,17 @@
                
         <li><a href="#">Employee</a></li>
     </ol>
+
+    <?php
+        if(!empty($msg)){ ?>
+            <div class="alert alert-success" style="text-align: center; font-size: 18px">
+                <?php
+                    echo $msg['message'][0];
+                ?>
+            </div>
+
+        <?php } ?>
+
            
     <div class="row">
                
@@ -98,9 +109,9 @@
 
                     <td class='text-right'>
 
-                    <span class='glyphicon glyphicon-eye-open' title=\"View Employee\" aria-hidden=\"true\"></span>
-                    <a href='/update/<?php echo $emp['id']?>'><span class='glyphicon glyphicon-pencil' title=\"Edit Employee\" aria-hidden=\"true\" style='color: green'></span></a>
-                    <span class='glyphicon glyphicon-remove' title=\"Remove Employee\" aria-hidden=\"true\" style='color: red'></span>
+                    <a href='/details/<?php echo $emp['id']?>'><span class='glyphicon glyphicon-eye-open' title="View Employee" aria-hidden=\"true\"></span></a>
+                    <a href='/update/<?php echo $emp['id']?>'><span class='glyphicon glyphicon-pencil' title="Edit Employee" aria-hidden=\"true\" style='color: green'></span></a>
+                    <span class='glyphicon glyphicon-remove' title="Remove Employee" aria-hidden=\"true\" style='color: red'></span>
 
                     </td>
 

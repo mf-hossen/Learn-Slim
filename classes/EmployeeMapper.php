@@ -65,4 +65,13 @@ class EmployeeMapper extends Mapper
         return $stmt;
 
     }
+
+    public function GetDetails($id)
+    {
+        //var_dump($id);
+        $sql = "SELECT * FROM employee where id='$id'";
+        $stmt = $this->db->query($sql);
+        $row = $stmt->fetch();
+        return $row;
+    }
 }
