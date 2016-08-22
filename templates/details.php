@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Employee List</title>
+    <title>Details of <?php echo $details['name'] ?></title>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -25,8 +25,6 @@
             text-align: right;
         }
 
-
-
         caption {
 
             background-color: beige;
@@ -40,78 +38,79 @@
     <ol class="breadcrumb">
              
         <li><a href="/employee">Home</a></li>
-               
-        <li><a href="#">Employee</a></li>
+        <li><a href="/employee">Employee</a></li>
+        <li><a href="#"><?php echo $details['name'] ?></a></li>
     </ol>
+    <?php
+    if (!empty($msg)) { ?>
+        <div class="alert alert-success" style="text-align: center; font-size: 18px">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <?php
+                echo $msg['message'][0];
+            ?>
+        </div>
 
-
-
-
+    <?php } ?>
 
            
     <div class="row">
-               
+        <div class="col-md-6"><h3>Employee Details</h3></div>
         <div class="col-md-6">
-                           <h2 class="pull-left">Employee Details</h2>
-                   
+            <div class="btn-toolbar" role="toolbar">
+                <a href="/add" class="btn btn-info btn-group pull-right">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> CREATE
+                </a>
+                <a href="/delete" class="btn btn-danger btn-group pull-right">
+                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> DELETE
+                </a>
+
+                <a href="/update/<?php echo $details['id']; ?>" class="btn btn-warning btn-group pull-right">
+                    <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> UPDATE
+                </a>
+                <a href="/employee" class="btn btn-success btn-group pull-right">
+                    <span class="glyphicon glyphicon-list" aria-hidden="true"></span> EMPLOYEES
+                </a>
+            </div>
         </div>
-               
-        <div class="col-md-6">
-                       <a href="/employee" class="btn btn-info pull-right" type="button" style="color">
-                Show All</a>
-
-
-                   
-        </div>
-    </div><br><br>
-
-    <dl class="dl-horizontal">
-
-        <dt>...</dt>
-        <dd>...</dd>
-
-
-    </dl>
+    </div>
+    <br><br>
 
 
     <div class="container">
         <table class="table table-responsive" style='width: 350px'>
 
             <tr>
-                <td>Name:</td>
-                <td><?php echo $details['name']?></td>
+                <td><b>Name:</b></td>
+                <td><?php echo $details['name'] ?></td>
             </tr>
-
             <tr>
-                <td>Designation</td>:
-                <td><?php echo $details['designation']?></td>
-
-
-            </tr>
-
-            <tr>
-                <td>Department:</td>
-                <td><?php echo $details['department']?></td>
+                <td><b>Designation:</b>:</td>
+                <td><?php echo $details['designation'] ?></td>
 
 
             </tr>
 
             <tr>
-                <td>Work Type:</td>
-                <td><?php echo $details['work_time']?></td>
+                <td><b>Department:</b></td>
+                <td><?php echo $details['department'] ?></td>
+
+
+            </tr>
+
+            <tr>
+                <td><b>Work Type:</b></td>
+                <td><?php echo $details['work_time'] ?></td>
             </tr>
 
 
             <tr>
-                <td>Salary:</td>
-                <td><?php echo $details['salary']?></td>
+                <td><b>Salary:</b></td>
+                <td><span class="glyphicon glyphicon-usd"></span><?php echo number_format($details['salary']); ?></td>
 
             </tr>
 
         </table>
     </div>
-
-
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
