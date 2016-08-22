@@ -38,12 +38,9 @@
                    
             <div class="col-md-6">
                            <a href="/employee" class="btn btn-info pull-right" type="button">
-                    Show All</a>
-
-
-                       
+                    Employees</a>
             </div>
-        </div><br><br>
+        </div>
 
 
          <div class="row">
@@ -61,8 +58,8 @@
                     <select name="designation" class="form-control" id="desi" required>
                         <option value="">--Select Designation--</option>
                         <option value="manager">Manager</option>
-                        <option value="reception">Reception</option>
-                        <option value="keeping">Keeper</option>
+                        <option value="receptionist">Receptionist</option>
+                        <option value="engineer">Engineer</option>
                     </select>
                     <!--<input type="text" name="designation" class="form-control" id="desi">-->
                 </div>
@@ -70,15 +67,15 @@
                     <label for="dept">Depatrment:</label>
                     <select name="department" class="form-control" id="dept" required>
                         <option value="">--Select Department--</option>
-                        <option value="hrm">Manager</option>
-                        <option value="reception">Reception</option>
-                        <option value="keeping">Keeper</option>
+                        <option value="HRM">HRM</option>
+                        <option value="Desk">Desk</option>
+                        <option value="IT">IT</option>
                     </select>
                     <!--<input type="text" name="department" class="form-control" id="dept">-->
                 </div>
 
                 <div class="form-group">
-                    <label for="dept">Work_type:</label>
+                    <label for="dept">Work Type:</label>
                     <select name="work_time" class="form-control" id="wtype" required>
                         <option value="">--Select Work type--</option>
                         <option value="day">Day</option>

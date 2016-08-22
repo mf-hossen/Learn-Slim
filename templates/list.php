@@ -22,10 +22,8 @@
         th {
             background-color: black;
             color: white;
-            text-align: right;
+            text-align: left;
         }
-
-
 
         caption {
 
@@ -44,37 +42,35 @@
         <li><a href="#">Employee</a></li>
     </ol>
 
-    <?php
-        if(!empty($msg)){ ?>
-            <div class="alert alert-success" style="text-align: center; font-size: 18px">
-                <?php
-                    echo $msg['message'][0];
-                ?>
-            </div>
 
-        <?php } ?>
+    <?php
+    if (!empty($delete_message)) { ?>
+        <div class="alert alert-success" style="text-align: center; font-size: 18px">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <?php
+                echo $delete_message['delete_message'][0];
+            ?>
+        </div>
+
+    <?php } ?>
 
            
     <div class="row">
                
         <div class="col-md-6">
-                           <h2 class="pull-left">Employee List</h2>
-                   
+            <h2 class="pull-left">Employee List</h2>
         </div>
                
         <div class="col-md-6">
-                       <a href="/insert" class=" glyphicon glyphicon-plus btn btn-info pull-right" type="button">
+            <a href="/add" class=" glyphicon glyphicon-plus btn btn-info pull-right" type="button">
                 CREATE</a>
-
-
-                   
         </div>
-    </div><br><br>
+    </div>
+    <br><br>
 
     <div class="row">
         <table class="table table-responsive">
             <tr>
-
                 <th>Name</th>
                 <th>Designation</th>
 
@@ -82,42 +78,49 @@
                 <th>Work Type</th>
                 <th>Salary</th>
                 <th>Action</th>
-
             </tr>
             <div class="col-md-6" style="text-align: center">
                 <?php
-
-
-                // english notation (default)
                 foreach ($employee as $emp) { ?>
 
-                     <tr>
+                    <tr>
 
-                   <td class='text-right'> <?php echo $emp['name'] ?></td>
+                        <td class='text-left'><a href="/details/<?php echo $emp['id'];?>"><?php echo $emp['name'] ?></a></td>
+                        <td class='text-left'> <?php echo $emp['designation'] ?></td>
+                        <td class='text-left'> <?php echo $emp['department'] ?></td>
+                        <?php
+                        $time = $emp['work_time'];
+                        if ($time == "day") {
+                            echo "<td style='color: green'>$time</td>";
+                        } elseif ($time == "night") {
+                            echo "<td style='color: orange'>$time</td>";
 
-                         <td class='text-right'> <?php echo $emp['designation'] ?></td>
+                        } else {
+                            echo "<td style='color: grey'>$time</td>";
+                        }
+                        ?>
+                        <td class='text-right'><span
+                                class="glyphicon glyphicon-usd"></span><?php echo $number = number_format($emp['salary'],2) ?>
+                        </td>
 
 
+                        <td class='text-right'>
 
-                         <td class='text-right'> <?php echo $emp['department'] ?></td>
+                            <a href='/details/<?php echo $emp['id'] ?>'><span class='glyphicon glyphicon-eye-open'
+                                                                              title="View Employee"
+                                                                              aria-hidden=\"true\"></span></a>
+                            <a href='/update/<?php echo $emp['id'] ?>'><span class='glyphicon glyphicon-pencil'
+                                                                             title="Edit Employee" aria-hidden=\"true\"
+                                                                             style='color: green'></span></a>
+                            <a href='/delete/<?php echo $emp['id']?>'><span class='glyphicon glyphicon-remove'
+                                                                             title="Remove Employee" aria-hidden=\"true\"
+                                                                             style='color: red'></span></a>
 
-                         <td class='text-right'> <?php echo $emp['work_time'] ?></td>
-
-                         <td class='text-right'> <?php echo $number= number_format($emp['salary']) ?></td>
-
-
-
-                    <td class='text-right'>
-
-                    <a href='/details/<?php echo $emp['id']?>'><span class='glyphicon glyphicon-eye-open' title="View Employee" aria-hidden=\"true\"></span></a>
-                    <a href='/update/<?php echo $emp['id']?>'><span class='glyphicon glyphicon-pencil' title="Edit Employee" aria-hidden=\"true\" style='color: green'></span></a>
-                    <span class='glyphicon glyphicon-remove' title="Remove Employee" aria-hidden=\"true\" style='color: red'></span>
-
-                    </td>
+                        </td>
 
                     </tr>
 
-              <?php  } ?>
+                <?php } ?>
 
 
             </div>

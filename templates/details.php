@@ -39,14 +39,14 @@
              
         <li><a href="/employee">Home</a></li>
         <li><a href="/employee">Employee</a></li>
-        <li><a href="#"><?php echo $details['name'] ?></a></li>
+        <li><?php echo $details['name'] ?></li>
     </ol>
     <?php
     if (!empty($msg)) { ?>
         <div class="alert alert-success" style="text-align: center; font-size: 18px">
             <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
             <?php
-                echo $msg['message'][0];
+            echo $msg['message'][0];
             ?>
         </div>
 
@@ -60,9 +60,9 @@
                 <a href="/add" class="btn btn-info btn-group pull-right">
                     <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> CREATE
                 </a>
-                <a href="/delete" class="btn btn-danger btn-group pull-right">
+                <!--<a href="/delete" class="btn btn-danger btn-group pull-right">
                     <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> DELETE
-                </a>
+                </a>-->
 
                 <a href="/update/<?php echo $details['id']; ?>" class="btn btn-warning btn-group pull-right">
                     <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> UPDATE
@@ -105,7 +105,7 @@
 
             <tr>
                 <td><b>Salary:</b></td>
-                <td><span class="glyphicon glyphicon-usd"></span><?php echo number_format($details['salary']); ?></td>
+                <td><span class="glyphicon glyphicon-usd"></span><?php echo number_format($details['salary'],2); ?></td>
 
             </tr>
 

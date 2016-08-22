@@ -1,8 +1,8 @@
 <?php
 //var_dump($update_data);
-//foreach ($update_data as $data) {
+foreach ($update_data as $data) {
     //echo $data['name'];
-//}
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,7 +11,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Add Emloyee</title>
+    <title>Update Employee</title>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -31,41 +31,53 @@
     <ol class="breadcrumb">
              
         <li><a href="/employee">Home</a></li>
-               
-        <li><a href="#">Add Employee</a></li>
+        <li><a href="/add">Add Employee</a></li>
+        <li><a href="#">Update</a></li>
     </ol>
 
+    <div class="row">
+        <div class="col-md-6"></div>
+        <div class="col-md-6">
+            <div class="btn-toolbar" role="toolbar">
+                <a href="/add" class="btn btn-info btn-group pull-right">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> CREATE
+                </a>
+                <!--<a href="/delete" class="btn btn-danger btn-group pull-right">
+                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> DELETE
+                </a>-->
+                <a href="/employee" class="btn btn-success btn-group pull-right">
+                    <span class="glyphicon glyphicon-list" aria-hidden="true"></span> EMPLOYEES
+                </a>
+            </div>
+        </div>
+    </div>
 
-         <div class="row">
+    <div class="row">
         <div class="col-md-3"></div>
         <div class="col-md-9">
         </div>
-             <form action="/update" method="post" style="width: 450px; margin: 0 auto">
-                <legend><h3>Employee Update Form</h3></legend>
+             
+        <form action="/update" method="post" style="width: 450px; margin: 0 auto">
+            <legend><h3>Employee Update Form</h3></legend>
             <div class="form-group">
                 <label for="name">Name:</label>
-                <input type="text" name="name" value="<?php foreach ($update_data as $data) {
-                    echo $data['name'];
-                }?>" class="form-control" id="name">
+                <input type="text" name="name" value="<?php echo $data['name']; ?>" class="form-control" id="name">
             </div>
 
-            <input type="hidden" name="id" value="<?php foreach ($update_data as $data) {
-                echo $data['id'];
-            }?>" >
+            <input type="hidden" name="id" value="<?php echo $data['id']; ?>" class="form-control" id="id">
+
 
             <div class="form-group">
                 <label for="des">Designation:</label>
                 <select name="designation" class="form-control" id="desi" required>
                     <?php
-                        foreach ($update_data as $data) {
-                        echo $data['designation'];
-
-                        }
-                    ?>
-
+                        if($data['designation']){?>
+                    <option  value="<?php echo $data['designation']?>"><?php echo $data['designation']?></option>
+                    <?php } ?>
                     <option value="manager">Manager</option>
-                    <option value="reception">Reception</option>
-                    <option value="keeping">Keeper</option>
+                    <option value="receptionist">Receptionist</option>
+                    <option value="engineer">Engineer</option>
+
                 </select>
             </div>
             <div class="form-group">
@@ -73,26 +85,24 @@
                 <select name="department" class="form-control" id="dept" required>
 
                     <?php
-                    foreach ($update_data as $data) {
-                        echo $data['department'];
+                    if($data['department']){?>
+                        <option value="<?= $data['department'] ?>" selected="selected"><?= $data['department'] ?></option>
+                    <?php } ?>
+                    <option value="HRM">HRM</option>
+                    <option value="HRM">HRM</option>
+                    <option value="Desk">Desk</option>
+                    <option value="IT">IT</option>
 
-                    }
-                    ?>
-                    <option value="hrm">HRM</option>
-                    <option value="reception">Reception</option>
-                    <option value="keeping">Keeper</option>
                 </select>
             </div>
 
             <div class="form-group">
-                <label for="dept">Work_type:</label>
+                <label for="dept">Work Type:</label>
                 <select name="work_time" class="form-control" id="wtype" required>
                     <?php
-                    foreach ($update_data as $data) {
-                        echo $data['work_time'];
-
-                    }
-                    ?>
+                        if($data['work_time']){?>
+                    <option value='<?php echo $data['work_time']?>'><?php echo $data['work_time']?></option>
+                    <?php } ?>
                     <option value="day">Day</option>
                     <option value="night">Night</option>
                     <option value="full">Full</option>
@@ -101,9 +111,8 @@
 
             <div class="form-group">
                 <label for="dept">Salary:</label>
-                <input type="text" name="salary" value="<?php foreach ($update_data as $data) {
-                    echo $data['salary'];
-                }?>"" class="form-control" id="salary">
+                <input type="text" name="salary" value="<?php echo $data['salary']; ?>" class="form-control"
+                       id="salary">
             </div>
             <button type="submit" class="btn btn-info">Submit</button>
         </form>

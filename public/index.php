@@ -65,15 +65,15 @@ $app->get('/', function (Request $request, Response $response) {
 $app->get('/employee', function (Request $request, Response $response) {
     $mapper = new EmployeeMapper($this->db);
     $data=$mapper->getEmployee();
-    $messages = $this->flash->getMessages();
-    $response = $this->view->render($response, "list.php", ['employee'=>$data,'msg'=>$messages]);
+    $delete_message = $this->flash->getMessages();
+    $response = $this->view->render($response, "list.php", ['employee'=>$data,'delete_message'=>$delete_message]);
     $this->logger->addInfo("Something  happened");
     $this->logger->error('');
     $this->logger->warning();
     return $response;
 });
 
-$app->get('/insert', function (Request $request, Response $response) {
+$app->get('/add', function (Request $request, Response $response) {
     $response = $this->view->render($response, "insert.php");
 });
 
@@ -81,9 +81,10 @@ $app->post('/insert', function (Request $request, Response $response) {
     $data = $request->getParsedBody();
     //var_dump($data);
     $mapper = new EmployeeMapper($this->db);
-    $mapper->AddEmployee($data);
-    $this->flash->addMessage('message', 'Data Inserted');
-    return $response->withRedirect('/employee');
+    $id=$mapper->AddEmployee($data);
+    //var_dump($sql);die();
+    $this->flash->addMessage('message', 'Successfuly employee added !!!');
+    return $response->withRedirect('/details/'.$id);
 
 
 });
@@ -100,20 +101,27 @@ $app->post('/update', function (Request $request, Response $response) {
     $data = $request->getParsedBody();
     //var_dump($data);
     $mapper = new EmployeeMapper($this->db);
-    $mapper->EditEmployee($data);
-    //return $response->withRedirect('/details');
+    $sql=$mapper->EditEmployee($data);
+    $this->flash->addMessage('update_message', 'Successfuly updated !!!');
+    return $response->withRedirect('/details/'.$sql);
 });
 
 $app->get('/details/{id}', function(Request $request, Response $response) {
     $id = $request->getAttribute('id');
     $mapper = new EmployeeMapper($this->db);
     $details_data = $mapper->GetDetails($id);
-
-    $response = $this->view->render($response, "details.php",['details'=>$details_data]);
+    $messages = $this->flash->getMessages();
+    $response = $this->view->render($response, "details.php",['details'=>$details_data,'msg'=>$messages]);
     return $response;
 });
 
-
+$app->get('/delete/{id}', function(Request $request, Response $response) {
+    $id = $request->getAttribute('id');
+    $mapper = new EmployeeMapper($this->db);
+    $mapper->EmpDelete($id);
+    $this->flash->addMessage('delete_message', 'Employee Deleted!!!');
+    return $response->withRedirect('/employee');
+});
 
 
 $app->run();
