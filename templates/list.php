@@ -37,9 +37,9 @@
 
     <ol class="breadcrumb">
              
-        <li><a href="#">Home</a></li>
+        <li>Home</li>
                
-        <li><a href="#">Employee</a></li>
+        <li><a href="/add">Add Employee</a></li>
     </ol>
 
 
@@ -86,8 +86,8 @@
                     <tr>
 
                         <td class='text-left'><a href="/details/<?php echo $emp['id'];?>"><?php echo $emp['name'] ?></a></td>
-                        <td class='text-left'> <?php echo $emp['designation'] ?></td>
-                        <td class='text-left'> <?php echo $emp['department'] ?></td>
+                        <td class='text-left'> <?php echo $emp['designation_name'] ?></td>
+                        <td class='text-left'> <?php echo $emp['department_name'] ?></td>
                         <?php
                         $time = $emp['work_time'];
                         if ($time == "day") {

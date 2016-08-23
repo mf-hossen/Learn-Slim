@@ -61,10 +61,10 @@ $app->get('/', function (Request $request, Response $response) {
 });
 
 
-
 $app->get('/employee', function (Request $request, Response $response) {
     $mapper = new EmployeeMapper($this->db);
     $data=$mapper->getEmployee();
+
     $delete_message = $this->flash->getMessages();
     $response = $this->view->render($response, "list.php", ['employee'=>$data,'delete_message'=>$delete_message]);
     $this->logger->addInfo("Something  happened");
@@ -74,7 +74,14 @@ $app->get('/employee', function (Request $request, Response $response) {
 });
 
 $app->get('/add', function (Request $request, Response $response) {
-    $response = $this->view->render($response, "insert.php");
+    $mapper = new EmployeeMapper($this->db);
+    $data=$mapper->getEmployee();
+    $mapper_dept = new DepartmentMapper($this->db);
+    $dept=$mapper_dept->GetDepartment();
+    $mapper_desi = new DesignationMapper($this->db);
+    $desi=$mapper_desi->GetDesignation();
+    //var_dump($desi);
+    $response = $this->view->render($response, "insert.php",['department'=>$dept,'designation'=>$desi]);
 });
 
 $app->post('/insert', function (Request $request, Response $response) {
@@ -85,15 +92,17 @@ $app->post('/insert', function (Request $request, Response $response) {
     //var_dump($sql);die();
     $this->flash->addMessage('message', 'Successfuly employee added !!!');
     return $response->withRedirect('/details/'.$id);
-
-
 });
 
 $app->get('/update/{id}', function(Request $request, Response $response) {
     $id = $request->getAttribute('id');
     $mapper = new EmployeeMapper($this->db);
     $update_data = $mapper->GetbyId($id);
-    $response = $this->view->render($response, "update.php",['update_data'=>$update_data]);
+    $mapper_dept = new DepartmentMapper($this->db);
+    $dept=$mapper_dept->GetDepartment();
+    $mapper_desi = new DesignationMapper($this->db);
+    $desi=$mapper_desi->GetDesignation();
+    $response = $this->view->render($response, "update.php",['update_data'=>$update_data,'department'=>$dept,'designation'=>$desi]);
     return $response;
 });
 
@@ -110,6 +119,7 @@ $app->get('/details/{id}', function(Request $request, Response $response) {
     $id = $request->getAttribute('id');
     $mapper = new EmployeeMapper($this->db);
     $details_data = $mapper->GetDetails($id);
+    //var_dump($details_data); die();
     $messages = $this->flash->getMessages();
     $response = $this->view->render($response, "details.php",['details'=>$details_data,'msg'=>$messages]);
     return $response;

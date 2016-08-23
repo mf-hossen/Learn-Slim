@@ -1,3 +1,6 @@
+<?php
+    //var_dump($details);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -64,7 +67,7 @@
                     <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> DELETE
                 </a>-->
 
-                <a href="/update/<?php echo $details['id']; ?>" class="btn btn-warning btn-group pull-right">
+                <a href="/update/<?php echo $details['emplye_id']; ?>" class="btn btn-warning btn-group pull-right">
                     <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> UPDATE
                 </a>
                 <a href="/employee" class="btn btn-success btn-group pull-right">
@@ -85,14 +88,14 @@
             </tr>
             <tr>
                 <td><b>Designation:</b>:</td>
-                <td><?php echo $details['designation'] ?></td>
+                <td><?php echo $details['designation_name'] ?></td>
 
 
             </tr>
 
             <tr>
                 <td><b>Department:</b></td>
-                <td><?php echo $details['department'] ?></td>
+                <td><?php echo $details['department_name'] ?></td>
 
 
             </tr>

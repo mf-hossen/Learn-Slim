@@ -55,21 +55,25 @@
                 </div>
                 <div class="form-group">
                     <label for="des">Designation:</label>
-                    <select name="designation" class="form-control" id="desi" required>
+                    <select name="designation_id" class="form-control" id="dept" required>
                         <option value="">--Select Designation--</option>
-                        <option value="manager">Manager</option>
-                        <option value="receptionist">Receptionist</option>
-                        <option value="engineer">Engineer</option>
+                        <?php
+                        foreach($designation as $data){?>
+                            <option value='<?php echo $data['id']?>'><?php echo $data['name']?></option>
+                        <?php } ?>
+
                     </select>
                     <!--<input type="text" name="designation" class="form-control" id="desi">-->
                 </div>
                 <div class="form-group">
                     <label for="dept">Depatrment:</label>
-                    <select name="department" class="form-control" id="dept" required>
+                    <select name="department_id" class="form-control" id="dept" required>
                         <option value="">--Select Department--</option>
-                        <option value="HRM">HRM</option>
-                        <option value="Desk">Desk</option>
-                        <option value="IT">IT</option>
+                        <?php
+                            foreach($department as $data){?>
+                            <option value='<?php echo $data['id']?>'><?php echo $data['name']?></option>
+                        <?php } ?>
+
                     </select>
                     <!--<input type="text" name="department" class="form-control" id="dept">-->
                 </div>

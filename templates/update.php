@@ -1,8 +1,8 @@
 <?php
 //var_dump($update_data);
-foreach ($update_data as $data) {
+//foreach ($update_data as $data) {
     //echo $data['name'];
-}
+//}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -61,47 +61,47 @@ foreach ($update_data as $data) {
             <legend><h3>Employee Update Form</h3></legend>
             <div class="form-group">
                 <label for="name">Name:</label>
-                <input type="text" name="name" value="<?php echo $data['name']; ?>" class="form-control" id="name">
+                <input type="text" name="name" value="<?php echo $update_data['name']; ?>" class="form-control" id="name">
             </div>
 
-            <input type="hidden" name="id" value="<?php echo $data['id']; ?>" class="form-control" id="id">
+            <input type="hidden" name="id" value="<?php echo $update_data['id']; ?>" class="form-control" id="id">
 
 
             <div class="form-group">
                 <label for="des">Designation:</label>
-                <select name="designation" class="form-control" id="desi" required>
+                <select name="designation_id" class="form-control" id="desi" required>
                     <?php
-                        if($data['designation']){?>
-                    <option  value="<?php echo $data['designation']?>"><?php echo $data['designation']?></option>
+                        if($update_data['designation_name']){?>
+                    <option  value="<?php echo $update_data['designation_id']?>" selected="selected"><?php echo $update_data['designation_name']?></option>
                     <?php } ?>
-                    <option value="manager">Manager</option>
-                    <option value="receptionist">Receptionist</option>
-                    <option value="engineer">Engineer</option>
+                    <option value="1">Manager</option>
+                    <option value="2">Receptionist</option>
+                    <option value="3">Engineer</option>
 
                 </select>
             </div>
             <div class="form-group">
                 <label for="dept">Depatrment:</label>
-                <select name="department" class="form-control" id="dept" required>
+                <select name="department_id" class="form-control" id="dept">
 
                     <?php
-                    if($data['department']){?>
-                        <option value="<?= $data['department'] ?>" selected="selected"><?= $data['department'] ?></option>
+                    if($update_data['department_name']){?>
+                        <option value="<?= $update_data['department_id'] ?>" selected="selected"><?= $update_data['department_name'] ?></option>
                     <?php } ?>
-                    <option value="HRM">HRM</option>
-                    <option value="HRM">HRM</option>
-                    <option value="Desk">Desk</option>
-                    <option value="IT">IT</option>
+                    <option value="1">HRM</option>
+                    <option value="2">Desk</option>
+                    <option value="3">IT</option>
+
 
                 </select>
             </div>
 
             <div class="form-group">
                 <label for="dept">Work Type:</label>
-                <select name="work_time" class="form-control" id="wtype" required>
+                <select name="work_time" class="form-control" id="wtype">
                     <?php
-                        if($data['work_time']){?>
-                    <option value='<?php echo $data['work_time']?>'><?php echo $data['work_time']?></option>
+                        if($update_data['work_time']){?>
+                    <option value='<?php echo $update_data['work_time']?>'><?php echo $update_data['work_time']?></option>
                     <?php } ?>
                     <option value="day">Day</option>
                     <option value="night">Night</option>
@@ -111,7 +111,7 @@ foreach ($update_data as $data) {
 
             <div class="form-group">
                 <label for="dept">Salary:</label>
-                <input type="text" name="salary" value="<?php echo $data['salary']; ?>" class="form-control"
+                <input type="text" name="salary" value="<?php echo $update_data['salary']; ?>" class="form-control"
                        id="salary">
             </div>
             <button type="submit" class="btn btn-info">Submit</button>
