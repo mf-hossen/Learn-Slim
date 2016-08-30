@@ -108,6 +108,7 @@ where employe.id='$id'";
             //var_dump($data); die();
             try {
 
+
                 $stmt = $this->db->prepare("INSERT INTO attendence (employee_id,check_in,check_out,date,year)
 VALUES (:employee_id,:check_in,:check_out,:date,:year)");
                 $stmt->bindParam(':employee_id', $data['employee_id']);
@@ -119,6 +120,7 @@ VALUES (:employee_id,:check_in,:check_out,:date,:year)");
                 $stmt->execute();
 
                 return $this->db->lastInsertId();
+
 
             } catch (Exception $e) {
                 throw $e;
@@ -145,14 +147,12 @@ VALUES (:employee_id,:check_in,:check_out,:date,:year)");
     public function empPunch($data)
     {
         try {
-
+            //var_dump($data); die();
             $id = $data['employee_id'];
-            var_dump($id);die();
             $stmt = $this->db->prepare("update attendence set check_out=:check_out where employee_id='$id'");
             $stmt->bindParam(':check_out', date('Y-m-d h:i:s'));
             $stmt->execute();
-            $dd = $this->getAttendence($id);
-            return $dd['employee_id'];
+
         } catch (Exception $e) {
             throw $e;
 
